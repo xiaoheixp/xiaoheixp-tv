@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>小黑直播 - iPad版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+            overflow: hidden;
+        }
+        
+        #container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+        
+        /* 视频播放区 */
+        #videoArea {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 70%;
+            height: 100%;
+            background: #000;
+        }
+        
+        #videoPlayer {
+            width: 100%;
+            height: 100%;
+            background: #000;
+        }
+        
+        #videoPlayer video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        /* 频道信息覆盖层 */
+        #channelInfo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: none;
+            z-index: 100;
+        }
+        
+        #channelInfo .name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        #channelInfo .category {
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        /* 频道列表区 */
+        #channelList {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30%;
+            height: 100%;
+            background: #2a2a2a;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        #channelList::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        #channelList::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        
+        #channelList::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 3px;
+        }
+        
+        .category {
+            padding: 15px 15px 10px 15px;
+            font-size: 14px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: #252525;
+            border-bottom: 1px solid #333;
+        }
+        
+        .channelItem {
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: block;
+            text-decoration: none;
+            color: #fff;
+        }
+        
+        .channelItem:hover,
+        .channelItem.active {
+            background: #3a3a3a;
+        }
+        
+        .channelItem.active {
+            border-left: 4px solid #ff6b35;
+            padding-left: 16px;
+        }
+        
+        .channelName {
+            font-size: 16px;
+            margin-bottom: 3px;
+        }
+        
+        .channelNumber {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        /* 加载提示 */
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 35%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 200;
+            display: none;
+        }
+        
+        #loading .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #333;
+            border-top-color: #ff6b35;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        #loading .text {
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        /* 错误提示 */
+        #errorMsg {
+            position: absolute;
+            top: 50%;
+            left: 35%;
+            transform: translate(-50%, -50%);
+            background: rgba(200, 50, 50, 0.9);
+            padding: 20px 30px;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+            z-index: 300;
+        }
+        
+        /* 标题栏 */
+        #header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 70%;
+            padding: 15px 20px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            z-index: 50;
+        }
+        
+        #header h1 {
+            font-size: 18px;
+            font-weight: normal;
+        }
+        
+        /* 横竖屏适配 */
+        @media screen and (orientation: portrait) {
+            #videoArea {
+                width: 100%;
+                height: 40%;
+            }
+            
+            #channelList {
+                width: 100%;
+                height: 60%;
+                top: 40%;
+                right: auto;
+                left: 0;
+            }
+            
+            #loading,
+            #errorMsg {
+                left: 50%;
+            }
+            
+            #header {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!-- 视频区域 -->
+        <div id="videoArea">
+            <div id="header">
+                <h1>小黑直播</h1>
+            </div>
+            
+            <div id="videoPlayer">
+                <video id="video" controls autoplay webkit-playsinline playsinline>
+                    您的浏览器不支持视频播放
+                </video>
+            </div>
+            
+            <div id="channelInfo">
+                <div class="name" id="infoName">--</div>
+                <div class="category" id="infoCategory">--</div>
+            </div>
+            
+            <div id="loading">
+                <div class="spinner"></div>
+                <div class="text">正在加载...</div>
+            </div>
+            
+            <div id="errorMsg">
+                <div>播放失败</div>
+                <div style="font-size: 12px; margin-top: 5px;">请尝试切换其他频道</div>
+            </div>
+        </div>
+        
+        <!-- 频道列表 -->
+        <div id="channelList">
+            <!-- 动态生成 -->
+        </div>
+    </div>
+
+    <script>
+        // iOS 8兼容写法 - 使用ES5
+        var channelsData = null;
+        var currentChannelIndex = 0;
+        var allChannels = [];
+        var video = document.getElementById('video');
+        var channelList = document.getElementById('channelList');
+        var loading = document.getElementById('loading');
+        var errorMsg = document.getElementById('errorMsg');
+        var channelInfo = document.getElementById('channelInfo');
+        var infoName = document.getElementById('infoName');
+        var infoCategory = document.getElementById('infoCategory');
+        var infoTimeout = null;
+        
+        // 加载频道数据
+        function loadChannels() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'channels.json', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        try {
+                            channelsData = JSON.parse(xhr.responseText);
+                            initChannels();
+                        } catch (e) {
+                            console.error('JSON解析失败:', e);
+                            showError('频道数据加载失败');
+                        }
+                    } else {
+                        showError('无法加载频道列表');
+                    }
+                }
+            };
+            xhr.send();
+        }
+        
+        // 初始化频道列表
+        function initChannels() {
+            if (!channelsData || !channelsData.channels) return;
+            
+            var html = '';
+            var channelNum = 1;
+            
+            for (var i = 0; i < channelsData.channels.length; i++) {
+                var cat = channelsData.channels[i];
+                html += '<div class="category">' + escapeHtml(cat.category) + '</div>';
+                
+                for (var j = 0; j < cat.items.length; j++) {
+                    var ch = cat.items[j];
+                    var index = allChannels.length;
+                    allChannels.push({
+                        name: ch.name,
+                        url: ch.url,
+                        category: cat.category,
+                        number: channelNum
+                    });
+                    
+                    html += '<a href="javascript:void(0)" class="channelItem" data-index="' + index + '" onclick="playChannel(' + index + ')">';
+                    html += '<div class="channelName">' + escapeHtml(ch.name) + '</div>';
+                    html += '<div class="channelNumber">频道 ' + channelNum + '</div>';
+                    html += '</a>';
+                    
+                    channelNum++;
+                }
+            }
+            
+            channelList.innerHTML = html;
+            
+            // 默认播放第一个频道
+            if (allChannels.length > 0) {
+                playChannel(0);
+            }
+        }
+        
+        // 播放指定频道
+        function playChannel(index) {
+            if (index < 0 || index >= allChannels.length) return;
+            
+            currentChannelIndex = index;
+            var channel = allChannels[index];
+            
+            // 更新UI状态
+            var items = channelList.getElementsByClassName('channelItem');
+            for (var i = 0; i < items.length; i++) {
+                items[i].className = 'channelItem';
+            }
+            items[index].className = 'channelItem active';
+            
+            // 滚动到当前频道
+            items[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // 显示加载
+            loading.style.display = 'block';
+            errorMsg.style.display = 'none';
+            
+            // 设置视频源
+            video.src = channel.url;
+            video.load();
+            
+            // 显示频道信息
+            showChannelInfo(channel);
+        }
+        
+        // 显示频道信息
+        function showChannelInfo(channel) {
+            infoName.textContent = channel.name;
+            infoCategory.textContent = channel.category + ' · 频道 ' + channel.number;
+            channelInfo.style.display = 'block';
+            
+            if (infoTimeout) {
+                clearTimeout(infoTimeout);
+            }
+            
+            infoTimeout = setTimeout(function() {
+                channelInfo.style.display = 'none';
+            }, 3000);
+        }
+        
+        // 显示错误
+        function showError(msg) {
+            loading.style.display = 'none';
+            errorMsg.style.display = 'block';
+            errorMsg.querySelector('div').textContent = msg;
+            
+            setTimeout(function() {
+                errorMsg.style.display = 'none';
+            }, 3000);
+        }
+        
+        // HTML转义
+        function escapeHtml(text) {
+            var div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // 视频事件监听
+        video.addEventListener('canplay', function() {
+            loading.style.display = 'none';
+            video.play();
+        });
+        
+        video.addEventListener('error', function() {
+            loading.style.display = 'none';
+            showError('播放失败，请切换频道');
+        });
+        
+        video.addEventListener('waiting', function() {
+            loading.style.display = 'block';
+        });
+        
+        video.addEventListener('playing', function() {
+            loading.style.display = 'none';
+        });
+        
+        // 启动
+        loadChannels();
+    </script>
+</body>
+</html>
