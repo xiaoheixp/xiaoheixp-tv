@@ -1,0 +1,66 @@
+{
+  "version": "1.0",
+  "updated": "2026-03-28",
+  "channels": [
+    {
+      "category": "CCTV 央视频道",
+      "items": [
+        {"name": "CCTV-1 综合", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-1-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "CCTV-2 财经", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-2-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011525&livemode=1&stbId=m"},
+        {"name": "CCTV-3 综艺", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-3-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011526&livemode=1&stbId=m"},
+        {"name": "CCTV-4 中文国际", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-4-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011527&livemode=1&stbId=m"},
+        {"name": "CCTV-5 体育", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-5-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011528&livemode=1&stbId=m"},
+        {"name": "CCTV-5+ 体育赛事", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-5PLUS-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "CCTV-6 电影", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-6-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011529&livemode=1&stbId=m"},
+        {"name": "CCTV-7 国防军事", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-7-HQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011530&livemode=1&stbId=m"},
+        {"name": "CCTV-8 电视剧", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-8-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011531&livemode=1&stbId=m"},
+        {"name": "CCTV-9 纪录", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-9-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011532&livemode=1&stbId=m"},
+        {"name": "CCTV-10 科教", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-10-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011533&livemode=1&stbId=m"},
+        {"name": "CCTV-11 戏曲", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-11-HQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011534&livemode=1&stbId=m"},
+        {"name": "CCTV-12 社会与法", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-12-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011535&livemode=1&stbId=m"},
+        {"name": "CCTV-13 新闻", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-13-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011536&livemode=1&stbId=m"},
+        {"name": "CCTV-14 少儿", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-14-HQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011537&livemode=1&stbId=m"},
+        {"name": "CCTV-15 音乐", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-15-HQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011538&livemode=1&stbId=m"},
+        {"name": "CCTV-16 奥林匹克", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-16-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "CCTV-17 农业农村", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-17-HQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "CCTV-4K 超高清", "url": "http://120.210.193.151:8006/120000000058/G_CCTV-4K-HD/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"}
+      ]
+    },
+    {
+      "category": "各省卫视",
+      "items": [
+        {"name": "安徽卫视", "url": "http://120.210.193.151:8006/120000000058/G_ANHUI-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "湖南卫视", "url": "http://120.210.193.151:8006/120000000058/G_HUNAN-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "东方卫视", "url": "http://120.210.193.151:8006/120000000058/G_DONGFANG-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "北京卫视", "url": "http://120.210.193.151:8006/120000000058/G_BEIJING-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "浙江卫视", "url": "http://120.210.193.151:8006/120000000058/G_ZHEJIANG-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "江苏卫视", "url": "http://120.210.193.151:8006/120000000058/G_JIANGSU-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "天津卫视", "url": "http://120.210.193.151:8006/120000000058/G_TIANJIN-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "山东卫视", "url": "http://120.210.193.151:8006/120000000058/G_SHANDONG-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "辽宁卫视", "url": "http://120.210.193.151:8006/120000000058/G_LIAONING-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "深圳卫视", "url": "http://120.210.193.151:8006/120000000058/G_SHENZHEN-HQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "广东卫视", "url": "http://120.210.193.151:8006/120000000058/G_GUANGDONG-HQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "四川卫视", "url": "http://120.210.193.151:8006/120000000058/G_SICHUAN-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "湖北卫视", "url": "http://120.210.193.151:8006/120000000058/G_HUBEI-HQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "重庆卫视", "url": "http://120.210.193.151:8006/120000000058/G_CHONGQING-CQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "河南卫视", "url": "http://120.210.193.151:8006/120000000058/G_HENAN-HQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "黑龙江卫视", "url": "http://120.210.193.151:8006/120000000058/G_HEILONGJIANG-HQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "东南卫视", "url": "http://120.210.193.151:8006/120000000058/G_DONGNAN-HQ/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"}
+      ]
+    },
+    {
+      "category": "NewTV 电影/体育",
+      "items": [
+        {"name": "NewTV超级体育", "url": "http://120.210.193.151:8006/120000000058/GITV-AH-1/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "NewTV超级综艺", "url": "http://120.210.193.151:8006/120000000058/GITV-AH-2/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "NewTV精彩赛事", "url": "http://120.210.193.151:8006/120000000058/GITV-AH-4/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "NewTV精品体育", "url": "http://120.210.193.151:8006/120000000058/GITV-AH-7/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "NewTV家庭剧场", "url": "http://120.210.193.151:8006/120000000058/GITV-AH-9/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "NewTV精彩影院", "url": "http://120.210.193.151:8006/120000000058/GITV-AH-10/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "NewTV超级电视剧", "url": "http://120.210.193.151:8006/120000000058/GITV-AH-11/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "NewTV超级电影", "url": "http://120.210.193.151:8006/120000000058/GITV-AH-12/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"},
+        {"name": "NewTV动作电影", "url": "http://120.210.193.151:8006/120000000058/GITV-AH-21/index.m3u8?channel-id=FifastbLive&Contentid=3000000020000011524&livemode=1&stbId=m"}
+      ]
+    }
+  ]
+}
